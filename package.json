@@ -2,11 +2,14 @@
   "name": "tetris",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
+  "main": "public/electron.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "electron-is-dev": "^2.0.0",
+    "node": "^16.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
@@ -15,11 +18,35 @@
     "web-vitals": "^1.1.2",
     "yarn": "^1.22.10"
   },
+  "author": {
+    "name": "Padyn Riddell",
+    "email": "pjriddell22@gmail.com",
+    "url": "https://padyn.dev"
+  },
+  "build": {
+    "appId": "com.my-website.my-app",
+    "productName": "MyApp",
+    "copyright": "Copyright © 2019 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "electron-builder --dir",
+    "electron-pack": "electron-builder -mw"
   },
   "eslintConfig": {
     "extends": [
@@ -40,7 +67,12 @@
     ]
   },
   "devDependencies": {
+    "@rescripts/cli": "^0.0.16",
+    "@rescripts/rescript-env": "^0.0.14",
     "concurrently": "^6.2.0",
+    "electron": "^13.1.2",
+    "electron-builder": "^22.11.7",
+    "typescript": "^4.3.2",
     "wait-on": "^5.3.0"
   }
 }

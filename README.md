@@ -24,5 +24,5 @@ Part 1: React Redux Tetris Tutorial
     - [x] Game Over and Restart
 Part 2: Desktop Apps with Electron
 - [x] Set up Electon requirements
-- [ ] Write out HTML/CSS/JS code
-- [ ] Launch Application
+- [x] Write out HTML/CSS/JS code
+- [x] Launch Application
